@@ -8,6 +8,8 @@ import java.util.stream.Collectors;
 public class MostFrequent {
 
     public static int mostFrequentItemCount(int[] collection){
+
+        if (collection.length == 0) return 0;
         Map<Integer, Integer> countMap = Arrays.stream(collection)
                 .boxed()
                 .collect(Collectors.groupingBy(e -> e,
