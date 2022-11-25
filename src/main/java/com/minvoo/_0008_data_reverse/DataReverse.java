@@ -6,22 +6,16 @@ import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 
 public class DataReverse {
 
     public static int[] dataReverse(int[] data) {
-        final int  divideSize = 8;
-        final AtomicInteger counter = new AtomicInteger();
-        List<Integer> collect = Arrays.stream(data)
-                .boxed()
-                .collect(Collectors.toList());
 
-        collect.stream().collect(Collectors.groupingBy(it -> counter.getAndIncrement() / divideSize))
-                .values()
-                .forEach(System.out::println);
-
-        return null;
+        return java.util.stream.IntStream.range(0, data.length)
+                .map(i -> data[data.length - 8 - (i / 8 * 8) + (i % 8)])
+                .toArray();
     }
 
 
